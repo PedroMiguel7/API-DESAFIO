@@ -208,7 +208,6 @@ func getEquipeByNome(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "equipe not found"})
 }
- 
 
 func postProjetos(c *gin.Context) {
 	var newProjeto projeto
