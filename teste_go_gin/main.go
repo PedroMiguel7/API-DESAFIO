@@ -8,26 +8,26 @@ import (
 
 // projeto represents data about a record projeto.
 type projeto struct {
-    ID     string  `json:"id"`
+    ID_Projeto     string  `json:"id"`
     Title  string  `json:"title"`
     Description string  `json:"Description"`
     IDequipe string `json:"equipe"`
 }
 
 type pessoa struct {
-    ID     string  `json:"id"`
+    ID_Pessoa     string  `json:"id"`
     Nome  string  `json:"nome"`
-    Id_Profissao string  `json:"profissao"`
+    Profissao string  `json:"profissao"`
+    ID_Equipe string `json:"equipe"`
 }
 
 type equipe struct {
     Nome string `json:"nome"`
-    ID string   `json:"id"`
-    IDMembers string `json:"idmembers"`
+    ID_Equipe string   `json:"id"`
 }
 
 type tarefa struct {
-    ID string `json:"id"`
+    ID_Tarefa string `json:"id"`
     Nome string `json:"nome"`
     Description string `json:"description"`
     ID_Project string `json:"ID_Projeto"`
@@ -37,29 +37,29 @@ type tarefa struct {
 
 // projetos slice to seed record projeto data.
 var projetos = []projeto{
-    {ID: "1", Title: "Central de Relacionamento", Description: "Sugestões", IDequipe: "1"},
-    {ID: "2", Title: "Jeru", Description: "talvez de certo", IDequipe: "2"},
-    {ID: "3", Title: "Sarah Vaughan and Clifford Brown", Description: "talvez de certo", IDequipe: "3"},
+    {ID_Projeto: "1", Title: "Central de Relacionamento", Description: "Sugestões", IDequipe: "1"},
+    {ID_Projeto: "2", Title: "Jeru", Description: "talvez de certo", IDequipe: "2"},
+    {ID_Projeto: "3", Title: "Sarah Vaughan and Clifford Brown", Description: "talvez de certo", IDequipe: "3"},
 }
 
 var pessoas = []pessoa{
-    {ID: "1", Nome: "Bruno", Id_Profissao: "45"},
-    {ID: "2", Nome: "Pedro", Id_Profissao: "12"},
-    {ID: "3", Nome: "Caio", Id_Profissao: "13"},
+    {ID_Pessoa: "1", Nome: "Bruno", Profissao: "Dev-Ops", ID_Equipe: "1"},
+    {ID_Pessoa: "2", Nome: "Pedro", Profissao: "Back-End", ID_Equipe: "1"},
+    {ID_Pessoa: "3", Nome: "Caio",  Profissao: "Front-End", ID_Equipe: "1"},
 }
 
 var equipes = []equipe{
-    {ID: "1", Nome: "Komanda", IDMembers: "3, 2, 1"},
-    {ID: "2", Nome: "DevsCariri", IDMembers: ""},
-    {ID: "3", Nome: "Kariri Inovação", IDMembers: ""},
+    {ID_Equipe: "1", Nome: "Komanda",},
+    {ID_Equipe: "2", Nome: "DevsCariri"},
+    {ID_Equipe: "3", Nome: "Kariri Inovação"},
 }
 
 var tarefas = []tarefa {
-    {ID: "1", Nome: "Criação de API REST", Description: "Utilizar GO LANG com Gin", ID_Project: "1", ID_Equipe: "", Tempo: ""},
-    {ID: "2", Nome: "Teste", Description: "Apenas Teste", ID_Project: "1", ID_Equipe: "", Tempo: ""},
-    {ID: "3", Nome: "Teste", Description: "Apenas Teste", ID_Project: "1", ID_Equipe: "", Tempo: ""},
-    {ID: "4", Nome: "Teste", Description: "Apenas Teste", ID_Project: "1", ID_Equipe: "", Tempo: ""},
-    {ID: "5", Nome: "Teste", Description: "Apenas Teste", ID_Project: "1", ID_Equipe: "", Tempo: ""},
+    {ID_Tarefa: "1", Nome: "Criação de API REST", Description: "Utilizar GO LANG com Gin", ID_Project: "1", ID_Equipe: "", Tempo: ""},
+    {ID_Tarefa: "2", Nome: "Teste", Description: "Apenas Teste", ID_Project: "1", ID_Equipe: "", Tempo: ""},
+    {ID_Tarefa: "3", Nome: "Teste", Description: "Apenas Teste", ID_Project: "1", ID_Equipe: "", Tempo: ""},
+    {ID_Tarefa: "4", Nome: "Teste", Description: "Apenas Teste", ID_Project: "1", ID_Equipe: "", Tempo: ""},
+    {ID_Tarefa: "5", Nome: "Teste", Description: "Apenas Teste", ID_Project: "1", ID_Equipe: "", Tempo: ""},
 }
 
 func main() {
@@ -71,7 +71,9 @@ func main() {
     router.PUT("/projetos/:id", editProjetoById)
     router.DELETE("/projetos/:id", deleteProjetoById)
     router.GET("/projetos/equipes/:id", getEquipeByID)
-    router.POST("/projetos/:id/tarefas", posttarefaprojeto)
+    router.GET("/projetos/equipes/:id/members", getMembersInEquipeByID)
+    router.POST("/projetos/:id/tarefas", postTarefaProjeto)
+
 
     router.GET("/tarefas", getTarefas)
     router.GET("/tarefas/:id", getTarefaByID)
@@ -132,7 +134,7 @@ func postprojetos(c *gin.Context) {
 func getprojetoByID(c *gin.Context) {
     id := c.Param("id")
     for _, a := range projetos {
-        if a.ID == id {
+        if a.ID_Projeto == id {
             c.IndentedJSON(http.StatusOK, a)
             return
         }
@@ -144,7 +146,7 @@ func getprojetoByID(c *gin.Context) {
 func deleteProjetoById(c *gin.Context) {
     id := c.Param("id")
     for i, a := range projetos {
-        if a.ID == id {
+        if a.ID_Projeto == id {
             projetos = append(projetos[:i], projetos[i+1:]... )
             return
         }
@@ -155,7 +157,7 @@ func deleteProjetoById(c *gin.Context) {
 func editProjetoById(c *gin.Context) {
     id := c.Param("id")
     for i := range projetos {
-        if projetos[i].ID == id {
+        if projetos[i].ID_Projeto == id {
         c.BindJSON(&projetos[i])
         c.IndentedJSON(http.StatusOK,projetos[i])
         return
@@ -179,13 +181,10 @@ func postpessoas(c *gin.Context) {
 
 func postEquipes(c *gin.Context) {
     var newequipe equipe
-
-    // Call BindJSON to bind the received JSON to
-    // newpessoa.
+    // Call BindJSON to bind the received JSON to newpessoa
     if err := c.BindJSON(&newequipe); err != nil {
         return
     }
-
     // Add the new pessoa to the slice.
     equipes = append(equipes, newequipe)
     c.IndentedJSON(http.StatusCreated, newequipe)
@@ -194,7 +193,7 @@ func postEquipes(c *gin.Context) {
 func deleteEquipeById(c *gin.Context) {
     id := c.Param("id")
     for i, a := range equipes {
-        if a.ID == id {
+        if a.ID_Equipe == id {
             equipes = append(equipes[:i], equipes[i+1:]... )
             return
         }
@@ -204,7 +203,7 @@ func deleteEquipeById(c *gin.Context) {
 func updateEquipeById(c *gin.Context) {
     id := c.Param("id")
     for i := range equipes {
-        if equipes[i].ID == id {
+        if equipes[i].ID_Equipe == id {
         c.BindJSON(&equipes[i])
         c.IndentedJSON(http.StatusOK,equipes[i])
         return
@@ -218,7 +217,7 @@ func getpessoaByID(c *gin.Context) {
     /* Loop through the list of pessoas, looking for
      an pessoa whose ID value matches the parameter.*/
     for _, a := range pessoas {
-        if a.ID == id {
+        if a.ID_Pessoa == id {
             c.IndentedJSON(http.StatusOK, a)
             return
         }
@@ -232,7 +231,7 @@ func getMemberByID(c *gin.Context) {
     /* Loop through the list of pessoas, looking for
      an pessoa whose ID value matches the parameter.*/
     for _, a := range pessoas {
-        if a.ID == id {
+        if a.ID_Pessoa == id {
             c.IndentedJSON(http.StatusOK, a)
             return
         }
@@ -243,20 +242,34 @@ func getMemberByID(c *gin.Context) {
 func getEquipeByID(c *gin.Context) {
     id := c.Param("id")
     for _, a := range equipes {
-        if a.ID == id {
+        if a.ID_Equipe == id {
             c.IndentedJSON(http.StatusOK, a)
             return
         }
     }
     c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Equipe not found"})
+}      
+// shows the members of a team by id on the screen
+func getMembersInEquipeByID(c *gin.Context) {
+	id := c.Param("id")
+	for _, a := range equipes {
+		if a.ID_Equipe == id {
+			for _, b := range pessoas {
+				if b.ID_Equipe == a.ID_Equipe {
+					c.IndentedJSON(http.StatusOK, b)
+				}
+			}
+			return
+		}
+	}
+	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "equipe not found"})
 }
-
 
     // Delete a person from the list of people by Id
 func deletePessoaById(c *gin.Context) {
     id := c.Param("id")
     for i, a := range pessoas {
-        if a.ID == id {
+        if a.ID_Pessoa == id {
             pessoas = append(pessoas[:i], pessoas[i+1:]... )
             return
         }
@@ -266,7 +279,7 @@ func deletePessoaById(c *gin.Context) {
 func updatePessoaById(c *gin.Context) {
     id := c.Param("id")
     for i := range pessoas {
-        if pessoas[i].ID == id {
+        if pessoas[i].ID_Pessoa == id {
         c.BindJSON(&pessoas[i])
         c.IndentedJSON(http.StatusOK,pessoas[i])
         return
@@ -277,7 +290,7 @@ func updatePessoaById(c *gin.Context) {
 func getTarefaByID(c *gin.Context) {
     id := c.Param("id")
     for _, a := range tarefas {
-        if a.ID == id {
+        if a.ID_Tarefa == id {
             c.IndentedJSON(http.StatusOK, a)
             return
         }
@@ -302,18 +315,19 @@ func postTarefas(c *gin.Context) {
 func editTarefaById(c *gin.Context) {
     id := c.Param("id")
     for i := range tarefas {
-        if tarefas[i].ID == id {
+        if tarefas[i].ID_Tarefa == id {
         c.BindJSON(&tarefas[i])
         c.IndentedJSON(http.StatusOK,tarefas[i])
         return
         }
     }
 }
+// // Delete a tarefa from the list of tarefas by Id
 
 func deleteTarefaById(c *gin.Context) {
     id := c.Param("id")
     for i, a := range tarefas {
-        if a.ID == id {
+        if a.ID_Tarefa == id {
             tarefas = append(tarefas[:i], tarefas[i+1:]... )
             return
         }
@@ -335,20 +349,21 @@ func getTarefasByProject(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "tarefa not found"})
 	}
 }
+// function publish a task in a given project
 
-func posttarefaprojeto(c *gin.Context){
+func postTarefaProjeto(c *gin.Context){
     id := c.Param("id")
 	count := 0
     for _, a := range projetos {
-        if a.ID == id {
+        if a.ID_Projeto == id {
                 var newtarefa tarefa
-                // Call BindJSON to bind the received JSON to
-                // newpessoa.
+                // Call BindJSON to bind the received JSON to new tarefa
+                
                 if err := c.BindJSON(&newtarefa); err != nil {
                     return
                 }
     
-                // Add the new pessoa to the slice.
+                // Add the new Tarefa to the slice by Project.
                 tarefas = append(tarefas, newtarefa)
                 c.IndentedJSON(http.StatusCreated, newtarefa)
                 return
