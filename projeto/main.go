@@ -44,7 +44,7 @@ var projetos = []projeto{
 }
 
 var pessoas = []pessoa{
-    {ID_Pessoa: "1", Nome: "Bruno", Profissao: "Dev-Ops", ID_Equipe: "1", ID_tarefa: []string{"1"}},
+    {ID_Pessoa: "1", Nome: "Bruno", Profissao: "Dev-Ops", ID_Equipe: "1", ID_tarefa: []string{"1", "4"}},
     {ID_Pessoa: "2", Nome: "Pedro", Profissao: "Back-End", ID_Equipe: "1", ID_tarefa: []string{"1", "3"}},
     {ID_Pessoa: "3", Nome: "Caio",  Profissao: "Front-End", ID_Equipe: "1", ID_tarefa: []string{"3", "2"}},
 }
@@ -96,9 +96,9 @@ func main() {
     router.POST("/pessoas", postpessoas)
     router.DELETE("/pessoas/:id", deletePessoaById)
     router.PUT("/pessoas/:id", updatePessoaById)
-    //router.GET("/pessoas/:id/tarefas", getpessoaByIDthetaks)
+    router.GET("/pessoas/:id/tarefas", getpessoaByIDthetaks)
 
-    router.Run("localhost:8081")
+    router.Run("localhost:8090")
 }
 
 // getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
@@ -403,10 +403,29 @@ func getTarefaBypeople(c *gin.Context){
 	}
 }
 
-/*
 //function that shows the tasks of a certain person
 
 func getpessoaByIDthetaks(c *gin.Context){
-
+    id := c.Param("id")
+    count := 0
+    for _, a := range pessoas {
+        if a.ID_Pessoa == id {
+            c.IndentedJSON(http.StatusOK, a)
+            outrocont := 0
+            for range a.ID_tarefa{
+                for _, b := range tarefas {
+                    if a.ID_tarefa[outrocont] == b.ID_Tarefa{
+                        c.IndentedJSON(http.StatusOK, b)
+                    } 
+                    outrocont+=1
+                }
+            }
+            count+=1
+        }
+    }
+    if(count > 0){
+		return
+	} else{
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "tarefa not found"})
+	}
 }
-*/
