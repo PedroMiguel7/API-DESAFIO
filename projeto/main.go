@@ -98,7 +98,7 @@ func main() {
     router.PUT("/pessoas/:id", updatePessoaById)
     router.GET("/pessoas/:id/tarefas", getpessoaByIDthetaks)
 
-    router.Run("localhost:8090")
+	router.Run("localhost: process.env.PORT" || "localhost:8090")
 }
 
 // getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
