@@ -1,6 +1,6 @@
 # Desafio API 
 
-Sistema criado para cadastrar projetos e equipes, um projeto possui uma equipe e deve ter tarefas dentro do projeto onde os membros
+Sistema criado para cadastrar projetos e equipes, um projeto possui uma equipe e tem tarefas dentro, onde os membros
 da equipe podem se atribuir.
 
 ## Detalhes
