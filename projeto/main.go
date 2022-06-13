@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+
 )
 
 // projeto represents data about a record projeto.
@@ -44,7 +45,7 @@ var projetos = []projeto{
 }
 
 var pessoas = []pessoa{
-    {ID_Pessoa: "1", Nome: "Bruno", Profissao: "Dev-Ops", ID_Equipe: "1", ID_tarefa: []string{"1", "4"}},
+    {ID_Pessoa: "1", Nome: "Bruno", Profissao: "Dev-Ops", ID_Equipe: "1", ID_tarefa: []string{"1", "4", "5"}},
     {ID_Pessoa: "2", Nome: "Pedro", Profissao: "Back-End", ID_Equipe: "1", ID_tarefa: []string{"1", "3"}},
     {ID_Pessoa: "3", Nome: "Caio",  Profissao: "Front-End", ID_Equipe: "1", ID_tarefa: []string{"3", "2"}},
 }
@@ -98,7 +99,9 @@ func main() {
     router.PUT("/pessoas/:id", updatePessoaById)
     router.GET("/pessoas/:id/tarefas", getpessoaByIDthetaks)
 
-	router.Run("localhost: process.env.PORT" || "localhost:8090")
+	//router.Run("localhost:8090")
+    //router.Use(static.Server("/",static.localhost("./views",true)))
+    router.Run()
 }
 
 // getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
@@ -416,8 +419,8 @@ func getpessoaByIDthetaks(c *gin.Context){
                 for _, b := range tarefas {
                     if a.ID_tarefa[outrocont] == b.ID_Tarefa{
                         c.IndentedJSON(http.StatusOK, b)
-                    } 
-                    outrocont+=1
+                        outrocont+=1
+                    }
                 }
             }
             count+=1
