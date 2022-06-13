@@ -5,6 +5,7 @@ da equipe podem se atribuir.
 
 ## Detalhes
 
+- Disponível em https://api-desafio-brisa.herokuapp.com
 - Utilizando Go e gin
 - Frontend não implementado nessa primeira etapa
 <div style="display: inline_block"><br>
