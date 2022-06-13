@@ -22,3 +22,18 @@ da equipe podem se atribuir.
 | Associar equipe a projeto | ✔️❤️ | 
 | Criar tarefa no projeto | ✔️❤️ | 
 | Atribuir tarefa | ✔️❤️ | 
+
+### APLICAÇÕES
+
+- PROJETOS:
+
+
+- EQUIPES:
+
+
+- MEMBROS:
+
+
+- TAREFAS:
+
+
