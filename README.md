@@ -13,6 +13,13 @@ da equipe podem se atribuir.
 <img align="center" alt="miguel-Golang" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" />
 </div>
 
+
+## Membros:
+<div><a href="https://github.com/PedroMiguel7">Pedro Miguel:</a></div> Desenvolvimento dos metódos GET, POST, PUT e DELETE, mais a atualização dos elementos projetos para associar mais de uma equipe, e pessoas para associar a mais de uma equipe e tarefa.
+<div><a href="https://github.com/caiosousaf">Caio Sousa:</a></div> Desenvolvimento dos metódos GET, POST, PUT e DELETE
+<div><a href="https://github.com/dayannebugarim">Dayanne Bugarim:</a></div>
+
+
 ## Andamento do projeto
 
 | Funcionalidade        | Estado |
@@ -26,14 +33,26 @@ da equipe podem se atribuir.
 ### APLICAÇÕES
 
 - PROJETOS:
-
+ GET:
+ POST: 
+ PUT:
+ DELETE:
 
 - EQUIPES:
-
+ GET:
+ POST: 
+ PUT:
+ DELETE:
 
 - MEMBROS:
-
+ GET:
+ POST: 
+ PUT:
+ DELETE:
 
 - TAREFAS:
-
+ GET:
+ POST: 
+ PUT:
+ DELETE:
 
