@@ -1,6 +1,8 @@
 package main
 
 import (
+    "os"
+
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -101,7 +103,8 @@ func main() {
 
 	//router.Run("localhost:8090")
     //router.Use(static.Server("/",static.localhost("./views",true)))
-    router.Run()
+    port := os.Getenv("PORT")
+    router.Run(":"+port)
 }
 
 // getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
