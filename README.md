@@ -15,9 +15,9 @@ da equipe podem se atribuir.
 
 
 ## Membros:
-<div><a href="https://github.com/PedroMiguel7">Pedro Miguel:</a></div> Desenvolvimento dos metódos GET, POST, PUT e DELETE, mais a atualização dos elementos projetos para associar mais de uma equipe, e pessoas para associar a mais de uma equipe e tarefa.
-<div><a href="https://github.com/caiosousaf">Caio Sousa:</a></div> Desenvolvimento dos metódos GET, POST, PUT e DELETE
-<div><a href="https://github.com/dayannebugarim">Dayanne Bugarim:</a></div>
+<div>-<a href="https://github.com/caiosousaf"> Caio Sousa:</a>  Desenvolvimento dos metódos GET, POST, PUT e DELETE</div>
+<div>-<a href="https://github.com/PedroMiguel7"> Pedro Miguel:</a>  Desenvolvimento dos metódos GET, POST e PUT, mais a atualização dos elementos projetos para associar mais de uma equipe, e pessoas para associar a mais de uma equipe e tarefa.</div> 
+<div>-<a href="https://github.com/dayannebugarim"> Dayanne Bugarim:</a>  </div>
 
 
 ## Andamento do projeto
@@ -33,26 +33,74 @@ da equipe podem se atribuir.
 ### APLICAÇÕES
 
 - PROJETOS:
- GET:
- POST: 
- PUT:
- DELETE:
-
-- EQUIPES:
- GET:
- POST: 
- PUT:
- DELETE:
-
-- MEMBROS:
- GET:
- POST: 
- PUT:
- DELETE:
-
-- TAREFAS:
- GET:
- POST: 
- PUT:
- DELETE:
+ <div>GET:</div>
+ <div>./projetos</div>
+ <div>./projetos/:id/tarefas/projetos/:id</div>
+ <div>./projetos/equipes/:id</div>
+ <div>./projetos/equipes/:id/members</div>
+ <div>------------------------------------</div>
+ <div> POST: </div>
+ <div>./projetos</div>
+ <div>./projetos/:id/tarefa</div>
+ <div>------------------------------------</div>
+ <div> PUT:</div>
+ <div>./projetos/:id</div>
+ <div>------------------------------------</div>
+ <div>DELETE:</div>
+ <div>./projetos/:id</div>
+ <div>------------------------------------</div>
+ <div>ㅤ </div>
+ <div>ㅤ </div>
+ 
+- EQUIPES: 
+ <div>GET:</div>
+ <div>./equipes</div>
+ <div>./equipes/:id</div>
+ <div>./equipes/member/:id</div>
+ <div>------------------------------------</div>
+ <div>POST:</div>
+ <div>./equipes</div>
+ <div>------------------------------------</div>
+ <div>PUT:</div>
+ <div>./equipes/:id</div>
+ <div>------------------------------------</div>
+ <div>DELETE:</div>
+ <div>./equipes/:id</div>
+ <div>------------------------------------</div>
+ <div>ㅤ </div>
+ <div>ㅤ </div>
+ 
+- MEMBROS: 
+ <div>GET:</div>
+ <div>./pessoas</div>
+ <div>./pessoas/:id</div>
+ <div>./pessoas/:id/tarefas</div>
+ <div>------------------------------------</div>
+ <div>POST:</div>
+ <div>./pessoas</div>
+ <div>------------------------------------</div>
+ <div>PUT:</div>
+ <div>./pessoas/:id</div>
+ <div>------------------------------------</div>
+ <div>DELETE:</div>
+ <div>./pessoas/:id</div>
+ <div>------------------------------------</div>
+ <div>ㅤ </div>
+ <div>ㅤ </div>
+ 
+- TAREFAS: 
+ <div>GET:</div>
+ <div>./tarefas</div>
+ <div>./tarefas/:id</div>
+ <div>./tarefas/:id/pessoas</div>
+ <div>------------------------------------</div>
+ <div>POST:</div>
+ <div>./tarefas</div>
+ <div>------------------------------------</div>
+ <div>PUT:</div>
+ <div>./tarefas/:id</div>
+ <div>------------------------------------</div>
+ <div>DELETE:</div>
+ <div>./tarefas/:id</div>
+ <div>------------------------------------</div>
 
