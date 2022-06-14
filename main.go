@@ -72,7 +72,7 @@ var menu= []string{
     "                                      ",
     "-=-=   PROJETOS   =-=-",
     "                                      ",
-    "GET:","/projetos","/projetos/:id/tarefas/projetos/:id","/projetos/equipes/:id","/projetos/equipes/:id/members","POST:","/projetos","./projetos/:id/tarefa","PUT:","/projetos/:id","DELETE:","/projetos/:id",
+    "GET:","/projetos","/projetos/:id/tarefas/projetos/:id","/projetos/equipes/:id","/projetos/equipes/:id/members","/projetos/:id/equipes","POST:","/projetos","./projetos/:id/tarefa","PUT:","/projetos/:id","DELETE:","/projetos/:id",
     "                                      ", "------------------------------------","                                      ",
     "-=-=   EQUIPES   =-=-",
     "                                      ", 
