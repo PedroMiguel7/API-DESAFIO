@@ -39,6 +39,7 @@ da equipe podem se atribuir.
  <div>/projetos/:id/tarefas/projetos/:id</div>
  <div>/projetos/equipes/:id</div>
  <div>/projetos/equipes/:id/members</div>
+ <div>/projetos/:id/equipes</div>
  <div>------------------------------------</div>
  <div> POST: </div>
  <div>/projetos</div>
