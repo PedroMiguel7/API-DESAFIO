@@ -67,7 +67,11 @@ var tarefas = []tarefa {
 
 var menu= []string{
     "Bem vindo!", 
-    "Aqui estão todas as rotas disponíveis",
+    "Aqui estão todas as rotas disponíveis:",
+    "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+    "\n\nPROJETOS:\nGET:\n./projetos\n./projetos/:id/tarefas/projetos/:id\n./projetos/equipes/:id\n./projetos/equipes/:id/members\n------------------------------------",
+
+    "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
 }
 
 func main() {
