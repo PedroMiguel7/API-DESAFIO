@@ -68,7 +68,7 @@ var tarefas = []tarefa {
 
 func main() {
     router := gin.Default()
-    router.GET("/", gettelainicial)
+    router.GET("", gettelainicial)
 
     router.GET("/projetos", getprojetos)
     router.GET("/projetos/:id", getprojetoByID)
@@ -118,7 +118,7 @@ func menu(){
 }
 
 func gettelainicial(c *gin.Context){
-    c.IndentedJSON(http.StatusOK, menu)
+    c.IndentedJSON(http.StatusOK, "Bem vindo!")
 }
 
 // getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
