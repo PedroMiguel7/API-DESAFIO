@@ -13,7 +13,7 @@ type projeto struct {
     ID_Projeto     string  `json:"id"`
     Title  string  `json:"title"`
     Description string  `json:"Description"`
-    IDequipe string `json:"equipe"`
+    IDequipe []string `json:"equipe"`
 }
 
 type pessoa struct {
@@ -40,9 +40,9 @@ type tarefa struct {
 
 // projetos slice to seed record projeto data.
 var projetos = []projeto{
-    {ID_Projeto: "1", Title: "Central de Relacionamento", Description: "Sugestões", IDequipe: "1"},
-    {ID_Projeto: "2", Title: "Jeru", Description: "talvez de certo", IDequipe: "2"},
-    {ID_Projeto: "3", Title: "Sarah Vaughan and Clifford Brown", Description: "talvez de certo", IDequipe: "3"},
+    {ID_Projeto: "1", Title: "Central de Relacionamento", Description: "Sugestões", IDequipe: []string{"1", "3"}},
+    {ID_Projeto: "2", Title: "Jeru", Description: "talvez de certo", IDequipe: []string{"1", "3"}},
+    {ID_Projeto: "3", Title: "Sarah Vaughan and Clifford Brown", Description: "talvez de certo", IDequipe: []string{"1", "3"}},
 }
 
 var pessoas = []pessoa{
@@ -98,6 +98,8 @@ func main() {
     router.GET("/projetos/:id/tarefas", getTarefasByProject)
     router.GET("/projetos/equipes/:id", getEquipeByID)
     router.GET("/projetos/equipes/:id/members", getMembersInEquipeByID)
+    router.GET("/projetos/:id/equipes", getEquipeByProjetobyID)
+
     router.POST("/projetos", postprojetos)
     router.POST("/projetos/:id/tarefas", postTarefaProjeto)
     router.PUT("/projetos/:id", editProjetoById)
@@ -180,6 +182,23 @@ func getprojetoByID(c *gin.Context) {
         }
     }
     c.IndentedJSON(http.StatusNotFound, gin.H{"message": "projeto not found"})
+}
+
+func getEquipeByProjetobyID(c *gin.Context){    
+    id := c.Param("id")
+    for _, a := range projetos {
+        if a.ID_Projeto == id {
+            c.IndentedJSON(http.StatusOK, a)
+            for _, d := range equipes{
+                for _, b:= range a.IDequipe{
+                    if d.ID_Equipe == b{
+                        c.IndentedJSON(http.StatusOK, d)
+                    }
+                }
+            }
+            return
+        }
+    }
 }
 
     // Delete a project from the list of projects by ID
