@@ -118,7 +118,7 @@ func menu(){
 }
 
 func gettelainicial(c *gin.Context){
-    c.IndentedJSON(http.StatusOK, "Bem vindo!")
+    c.IndentedJSON(http.StatusOK, "Bem vindo!\nEssa são todas as nossas rotas disponiveis no momento:\n\nGET:\n./projetos\n./projetos/:id/tarefas/projetos/:id\n./projetos/equipes/:id\n./projetos/equipes/:id/members\n------------------------------------\n\nPOST:\n./projetos\n./projetos/:id/tarefa\n------------------------------------\n\nPUT:\n./projetos/:id\n------------------------------------\n\nDELETE:\n./projetos/:id\n------------------------------------")
 }
 
 // getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
