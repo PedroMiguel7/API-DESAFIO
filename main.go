@@ -69,27 +69,23 @@ var menu= []string{
     "Bem vindo!", 
     "Aqui estão todas as rotas disponíveis:",
     "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
-
+    "                                      ",
     "-=-=   PROJETOS   =-=-",
-
-    "GET:",
-    "./projetos",
-    "./projetos/:id/tarefas/projetos/:id",
-    "./projetos/equipes/:id",
-    "./projetos/equipes/:id/members",
-    "------------------------------------",
-    "POST:",
-    "./projetos",
-    "./projetos/:id/tarefa",
-    "------------------------------------",
-    "PUT:",
-    "./projetos/:id",
-    "------------------------------------",
-    "DELETE:",
-    "./projetos/:id","------------------------------------",
-
-
-
+    "                                      ",
+    "GET:","./projetos","./projetos/:id/tarefas/projetos/:id","./projetos/equipes/:id","./projetos/equipes/:id/members","------------------------------------","POST:","./projetos","./projetos/:id/tarefa","------------------------------------","PUT:","./projetos/:id","------------------------------------","DELETE:","./projetos/:id","------------------------------------",
+    "                                      ",
+    "-=-=   EQUIPES   =-=-",
+    "                                      ",
+    "GET:","./equipes","./equipes/:id","./equipes/member/:id","------------------------------------","POST:","./equipes","------------------------------------","PUT:","./equipes/:id","------------------------------------","DELETE:","./equipes/:id","------------------------------------",
+    "                                      ",
+    "-=-=   MEMBROS   =-=-",
+    "                                      ",
+    "GET:","./pessoas","./pessoas/:id","./pessoas/:id/tarefas","------------------------------------","POST:","./pessoas","------------------------------------","PUT:","./pessoas/:id","------------------------------------","DELETE:","./pessoas/:id","------------------------------------",
+    "                                      ",
+    "-=-=   TAREFAS   =-=-",
+    "                                      ",
+    "GET:","./tarefas","./tarefas/:id","./tarefas/:id/pessoas","------------------------------------","POST:","./tarefas","------------------------------------","PUT:","./tarefas/:id","------------------------------------","DELETE:","./tarefas/:id",
+    "                                      ",
     "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
 }
 
@@ -133,16 +129,15 @@ func main() {
 
 
 	//router.Run("localhost:8090")
-    //router.Use(static.Server("/",static.localhost("./views",true)))
     port := os.Getenv("PORT")
     router.Run(":"+port)
 }
 
+// getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
 func gettelainicial(c *gin.Context){
     c.IndentedJSON(http.StatusOK, menu)
 }
 
-// getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
 func getprojetos(c *gin.Context) {
     c.IndentedJSON(http.StatusOK, projetos)
 }
