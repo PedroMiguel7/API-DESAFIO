@@ -66,7 +66,7 @@ var tarefas = []tarefa {
 }
 
 var menu= []string{
-    "Bem vindo!",
+    "Bem vindo!","                                      ","Mais detalhes em: https://github.com/caiosousaf/api_desafio_BrisaNet",
     "Aqui estão todas as rotas disponíveis:",
     "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
     "                                      ",
