@@ -35,73 +35,73 @@ da equipe podem se atribuir.
 
 - PROJETOS:
  <div>GET:</div>
- <div>./projetos</div>
- <div>./projetos/:id/tarefas/projetos/:id</div>
- <div>./projetos/equipes/:id</div>
- <div>./projetos/equipes/:id/members</div>
+ <div>/projetos</div>
+ <div>/projetos/:id/tarefas/projetos/:id</div>
+ <div>/projetos/equipes/:id</div>
+ <div>/projetos/equipes/:id/members</div>
  <div>------------------------------------</div>
  <div> POST: </div>
- <div>./projetos</div>
- <div>./projetos/:id/tarefa</div>
+ <div>/projetos</div>
+ <div>/projetos/:id/tarefa</div>
  <div>------------------------------------</div>
  <div> PUT:</div>
- <div>./projetos/:id</div>
+ <div>/projetos/:id</div>
  <div>------------------------------------</div>
  <div>DELETE:</div>
- <div>./projetos/:id</div>
+ <div>/projetos/:id</div>
  <div>------------------------------------</div>
  <div>ㅤ </div>
  <div>ㅤ </div>
  
 - EQUIPES: 
  <div>GET:</div>
- <div>./equipes</div>
- <div>./equipes/:id</div>
- <div>./equipes/member/:id</div>
+ <div>/equipes</div>
+ <div>/equipes/:id</div>
+ <div>/equipes/member/:id</div>
  <div>------------------------------------</div>
  <div>POST:</div>
- <div>./equipes</div>
+ <div>/equipes</div>
  <div>------------------------------------</div>
  <div>PUT:</div>
- <div>./equipes/:id</div>
+ <div>/equipes/:id</div>
  <div>------------------------------------</div>
  <div>DELETE:</div>
- <div>./equipes/:id</div>
+ <div>/equipes/:id</div>
  <div>------------------------------------</div>
  <div>ㅤ </div>
  <div>ㅤ </div>
  
 - MEMBROS: 
  <div>GET:</div>
- <div>./pessoas</div>
- <div>./pessoas/:id</div>
- <div>./pessoas/:id/tarefas</div>
+ <div>/pessoas</div>
+ <div>/pessoas/:id</div>
+ <div>/pessoas/:id/tarefas</div>
  <div>------------------------------------</div>
  <div>POST:</div>
- <div>./pessoas</div>
+ <div>/pessoas</div>
  <div>------------------------------------</div>
  <div>PUT:</div>
- <div>./pessoas/:id</div>
+ <div>/pessoas/:id</div>
  <div>------------------------------------</div>
  <div>DELETE:</div>
- <div>./pessoas/:id</div>
+ <div>/pessoas/:id</div>
  <div>------------------------------------</div>
  <div>ㅤ </div>
  <div>ㅤ </div>
  
 - TAREFAS: 
  <div>GET:</div>
- <div>./tarefas</div>
- <div>./tarefas/:id</div>
- <div>./tarefas/:id/pessoas</div>
+ <div>/tarefas</div>
+ <div>/tarefas/:id</div>
+ <div>/tarefas/:id/pessoas</div>
  <div>------------------------------------</div>
  <div>POST:</div>
- <div>./tarefas</div>
+ <div>/tarefas</div>
  <div>------------------------------------</div>
  <div>PUT:</div>
- <div>./tarefas/:id</div>
+ <div>/tarefas/:id</div>
  <div>------------------------------------</div>
  <div>DELETE:</div>
- <div>./tarefas/:id</div>
+ <div>/tarefas/:id</div>
  <div>------------------------------------</div>
 
