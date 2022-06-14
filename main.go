@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"net/http"
@@ -66,6 +65,11 @@ var tarefas = []tarefa {
     {ID_Tarefa: "5", Nome: "Teste", Description: "Apenas Teste", ID_Project: "1", ID_Equipe: "", Tempo: ""},
 }
 
+var menu= []string{
+    "Bem vindo!", 
+    "Aqui estão todas as rotas disponíveis",
+}
+
 func main() {
     router := gin.Default()
     router.GET("", gettelainicial)
@@ -111,16 +115,8 @@ func main() {
     router.Run(":"+port)
 }
 
-func menu(){
-    fmt.Println("Bem vindo!")
-    fmt.Println("Essa são todas as nossas rotas disponiveis no momento:")
-    fmt.Println("GET:\n./projetos\n./projetos/:id/tarefas/projetos/:id\n./projetos/equipes/:id\n./projetos/equipes/:id/members\n------------------------------------\n\nPOST:\n./projetos\n./projetos/:id/tarefa\n------------------------------------\n\nPUT:\n./projetos/:id\n------------------------------------\n\nDELETE:\n./projetos/:id\n------------------------------------")
-}
-
 func gettelainicial(c *gin.Context){
-    c.IndentedJSON(http.StatusOK, "Bem vindo!")
-    c.IndentedJSON(http.StatusOK, "Essa são todas as nossas rotas disponiveis no momento:")
-
+    c.IndentedJSON(http.StatusOK, menu)
 }
 
 // getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
