@@ -66,7 +66,7 @@ var tarefas = []tarefa {
 }
 
 var menu= []string{
-    "Bem vindo!", 
+    "Bem vindo!",
     "Aqui estão todas as rotas disponíveis:",
     "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
     "                                      ",
@@ -475,12 +475,17 @@ func getpessoaByIDthetaks(c *gin.Context){
                     }
                 }
             }
+            if(outrocont > 0){
+                return
+            } else{
+                c.IndentedJSON(http.StatusNotFound, gin.H{"message": "tarefa not found"})
+            }
             count+=1
         }
     }
     if(count > 0){
 		return
 	} else{
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "tarefa not found"})
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "pessoa not found"})
 	}
 }
