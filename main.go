@@ -69,7 +69,13 @@ var menu= []string{
     "Bem vindo!", 
     "Aqui estão todas as rotas disponíveis:",
     "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
-    "\n\nPROJETOS:\nGET:\n./projetos\n./projetos/:id/tarefas/projetos/:id\n./projetos/equipes/:id\n./projetos/equipes/:id/members\n------------------------------------",
+    "PROJETOS:",
+    "GET:",
+    "./projetos",
+    "./projetos/:id/tarefas/projetos/:id",
+    "./projetos/equipes/:id",
+    "./projetos/equipes/:id/members",
+    "------------------------------------",
 
     "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
 }
