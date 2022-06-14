@@ -1,12 +1,12 @@
 package main
 
 import (
-    "os"
+	"fmt"
+	"os"
 
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-
 )
 
 // projeto represents data about a record projeto.
@@ -68,43 +68,54 @@ var tarefas = []tarefa {
 
 func main() {
     router := gin.Default()
+    router.GET("/", gettelainicial)
+
     router.GET("/projetos", getprojetos)
     router.GET("/projetos/:id", getprojetoByID)
     router.GET("/projetos/:id/tarefas", getTarefasByProject)
-    router.POST("/projetos", postprojetos)
-    router.PUT("/projetos/:id", editProjetoById)
-    router.DELETE("/projetos/:id", deleteProjetoById)
     router.GET("/projetos/equipes/:id", getEquipeByID)
     router.GET("/projetos/equipes/:id/members", getMembersInEquipeByID)
+    router.POST("/projetos", postprojetos)
     router.POST("/projetos/:id/tarefas", postTarefaProjeto)
-
-
-    router.GET("/tarefas", getTarefas)
-    router.GET("/tarefas/:id", getTarefaByID)
-    router.POST("/tarefas", postTarefas)
-    router.PUT("/tarefas/:id", editTarefaById)
-    router.DELETE("/tarefas/:id", deleteTarefaById)
-    router.GET("/tarefas/:id/pessoas", getTarefaBypeople)
+    router.PUT("/projetos/:id", editProjetoById)
+    router.DELETE("/projetos/:id", deleteProjetoById)
 
 
     router.GET("/equipes", getEquipes)
     router.GET("/equipes/:id", getEquipeByID)
     router.GET("/equipes/member/:id", getMemberByID)
     router.POST("/equipes", postEquipes)
-    router.DELETE("/equipes/:id", deleteEquipeById)
     router.PUT("/equipes/:id", updateEquipeById)
+    router.DELETE("/equipes/:id", deleteEquipeById)
+    
 
     router.GET("/pessoas", getPessoas)
     router.GET("/pessoas/:id", getpessoaByID)
-    router.POST("/pessoas", postpessoas)
-    router.DELETE("/pessoas/:id", deletePessoaById)
-    router.PUT("/pessoas/:id", updatePessoaById)
     router.GET("/pessoas/:id/tarefas", getpessoaByIDthetaks)
+    router.POST("/pessoas", postpessoas)
+    router.PUT("/pessoas/:id", updatePessoaById)
+    router.DELETE("/pessoas/:id", deletePessoaById)
+    
+
+    router.GET("/tarefas", getTarefas)
+    router.GET("/tarefas/:id", getTarefaByID)
+    router.GET("/tarefas/:id/pessoas", getTarefaBypeople)
+    router.POST("/tarefas", postTarefas)
+    router.PUT("/tarefas/:id", editTarefaById)
+    router.DELETE("/tarefas/:id", deleteTarefaById)
+
 
 	//router.Run("localhost:8090")
     //router.Use(static.Server("/",static.localhost("./views",true)))
     port := os.Getenv("PORT")
     router.Run(":"+port)
+}
+
+func gettelainicial(c *gin.Context){
+    fmt.Println("Bem vindo!")
+    fmt.Println("Essa são todas as nossas rotas disponiveis no momento:")
+    fmt.Println("GET:\n./projetos\n./projetos/:id/tarefas/projetos/:id\n./projetos/equipes/:id\n./projetos/equipes/:id/members\n------------------------------------\n\nPOST:\n./projetos\n./projetos/:id/tarefa\n------------------------------------\n\nPUT:\n./projetos/:id\n------------------------------------\n\nDELETE:\n./projetos/:id\n------------------------------------")
+    fmt.Println("")
 }
 
 // getprojetos/Pessoas/Equipes responds with the list of all projetos as JSON.
